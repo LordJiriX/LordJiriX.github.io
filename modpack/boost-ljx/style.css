@@ -20,11 +20,11 @@ a {
   color: black;
 }
 .foot {
-  background-color: #333;
+  background-color: black;
             color: white;
             text-align: center;
             padding: 1rem;
-            position: fixed;
+           /* position: fixed;*/
             width: 100%;
             bottom: 0;
 }
