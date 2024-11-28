@@ -1,2 +1,1 @@
-# LordJiriX.github.io
-LordJiriX website
+This in my website LordJiriX
