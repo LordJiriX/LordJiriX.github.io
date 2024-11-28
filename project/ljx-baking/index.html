@@ -1,1 +1,188 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dokumentace Softwaru</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color, #f4f4f4);
+            color: var(--text-color, #000);
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .menu-toggle {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            background-color: transparent;
+            color: #4CAF50;
+            border: none;
+            padding: 1rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .menu-toggle .icon {
+            font-size: 2rem;
+        }
+        .menu-toggle:hover {
+            transform: scale(1.1);
+        }
+        nav {
+            display: none;
+            background-color: var(--menu-background-color, #333);
+            color: var(--menu-text-color, white);
+            position: fixed;
+            top: 0;
+            right: 0;
+            height: 100%;
+            width: 250px;
+            overflow: auto;
+            transition: transform 0.3s ease-in-out;
+            box-shadow: -4px 0 6px rgba(0, 0, 0, 0.1);
+        }
+        nav a, nav .toggle-submenu {
+            display: block;
+            color: inherit;
+            text-align: center;
+            padding: 1rem;
+            text-decoration: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            /*cursor: pointer;*/
+        }
+        nav a:hover, nav .toggle-submenu:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        .content {
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+        footer {
+            background-color: green;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .mode-switch {
+            float: right;
+            padding: 14px 16px;
+            /*cursor: pointer;*/
+            color: white;
+        }
+        .icon {
+            font-size: 1.5rem;
+            vertical-align: middle;
+        }
+        .close-menu {
+            text-align: right;
+            padding: 1rem;
+        }
+        .submenu {
+            display: none;
+            padding-left: 1rem;
+            text-align: center;
+        }
+        .submenu a {
+            text-align: left;
+            padding-left: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Dokumentace Softwaru</h1>
+    </header>
+    <button class="menu-toggle" onclick="toggleMenu()">
+        <i class="fas fa-bars icon"></i>
+    </button>
+    <nav id="menu">
+        <div class="close-menu" onclick="toggleMenu()">
+            <i class="fas fa-times icon"></i>
+        </div>
+        <div class="toggle-submenu" onclick="toggleSubmenu('start-submenu')">
+            Set start <i class="fas fa-chevron-down icon"></i>
+        </div>
+        <div id="start-submenu" class="submenu">
+            <a href="#about">About</a>
+            <a href="#install">Install</a>
+        </div>
+        <div class="toggle-submenu" onclick="toggleSubmenu('mod-submenu')">
+            Mod <i class="fas fa-chevron-down icon"></i>
+        </div>
+        <div id="mod-submenu" class="submenu">
+            <a href="#items">Items</a>
+            <a href="#gallery">Gallery</a>
+        </div>
+        
+        <a href="">⬇️ Download</a>
+        <span class="mode-switch" onclick="toggleMode()">
+            <i class="fas fa-moon icon"></i>
+        </span>
+    </nav>
+    <div class="content">
+        <h2 id="installace">Instalace</h2>
+        <p>Popis, jak nainstalovat software.</p>
+        
+        <h2 id="pouziti">Použití</h2>
+        <p>Návod, jak software používat.</p>
+        
+        <h2 id="api">API</h2>
+        <p>Podrobný popis API včetně příkladů.</p>
+        
+        <h2 id="faq">FAQ</h2>
+        <p>Časté dotazy a odpovědi.</p>
+    </div>
+    <footer>
+        <p>© 2024 LordJiriX All right's reserved</p>
+    </footer>
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            if (menu.style.display === 'block') {
+                menu.style.display = 'none';
+            } else {
+                menu.style.display = 'block';
+            }
+        }
 
+        function toggleSubmenu(id) {
+            const submenu = document.getElementById(id);
+            if (submenu.style.display === 'block') {
+                submenu.style.display = 'none';
+            } else {
+                submenu.style.display = 'block';
+            }
+        }
+
+        function toggleMode() {
+            if (document.body.style.getPropertyValue('--background-color') === 'black') {
+                document.body.style.setProperty('--background-color', '#f4f4f4');
+                document.body.style.setProperty('--text-color', '#000');
+                document.body.style.setProperty('--menu-background-color', '#333');
+                document.body.style.setProperty('--menu-text-color', 'white');
+                document.querySelector('.mode-switch i').classList.replace('fa-sun', 'fa-moon');
+            } else {
+                document.body.style.setProperty('--background-color', 'black');
+                document.body.style.setProperty('--text-color', 'white');
+                document.body.style.setProperty('--menu-background-color', '#111');
+                document.body.style.setProperty('--menu-text-color', '#fff');
+                document.querySelector('.mode-switch i').classList.replace('fa-moon', 'fa-sun');
+            }
+        }
+    </script>
+</body>
+</html>
