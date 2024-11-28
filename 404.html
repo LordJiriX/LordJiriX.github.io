@@ -4,26 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>404 - Stránka nenalezena</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
         }
         .container {
             text-align: center;
         }
         h1 {
             font-size: 6rem;
-            color: #333;
         }
         p {
             font-size: 1.5rem;
-            color: #666;
         }
         button {
             padding: 10px 20px;
@@ -32,22 +32,54 @@
             background-color: #007bff;
             border: none;
             border-radius: 5px;
-
+            cursor: pointer;
         }
         button:hover {
             background-color: #0056b3;
         }
+        #mode-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: transparent;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        .light-mode {
+            --bg-color: #f2f2f2;
+            --text-color: #333;
+        }
+        .dark-mode {
+            --bg-color: #333;
+            --text-color: #f2f2f2;
+        }
     </style>
 </head>
-<body>
+<body class="light-mode">
     <div class="container">
         <h1>404</h1>
         <p>Page not found</p>
         <button onclick="goBack()">Back</button>
     </div>
+    <button id="mode-toggle" onclick="toggleMode()">
+        <i id="mode-icon" class="fas fa-moon"></i>
+    </button>
     <script>
         function goBack() {
             window.history.back();
+        }
+        function toggleMode() {
+            const body = document.body;
+            const modeIcon = document.getElementById('mode-icon');
+            const currentMode = body.className;
+            if (currentMode === 'light-mode') {
+                body.className = 'dark-mode';
+                modeIcon.className = 'fas fa-sun';
+            } else {
+                body.className = 'light-mode';
+                modeIcon.className = 'fas fa-moon';
+            }
         }
     </script>
 </body>
