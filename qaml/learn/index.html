@@ -1,0 +1,61 @@
+<!DOCTIPE html>
+<html lang="en">
+<head>
+  
+<title>QAML Docs</title>
+<style>
+  html {
+  background-color: gray;
+  color: blue;
+  text-align: center;
+}
+nav {
+  border: green dashed  2px;
+  text-align: center;
+  padding: 15px;
+}
+.nav-card {
+  border: orange dotted 1px;
+  display: inline-block;
+  padding: 10px;
+  cursor: pointer;
+  position: static;
+}
+.nav-card:hover {
+  background-color: black;
+}
+a {
+  text-decoration: none;
+}
+.red {
+  color: red;
+  
+}
+  </style>
+</head>
+<body>
+  <nav></nav>
+  
+  <h3>QAML variables:</h3>
+  <code>greet: "Hello World!"</code>
+
+  <code>example1: greet</code>
+  <h3>QAML object:</h3>
+  <code>example {
+    greet: "Hello"
+    name: "World"
+  }</code>
+
+  <h3>QAML comments:</h3>
+  <div class="red"><p>Comments can only be at the beginning of a line</p></div>
+  <code>//hi im comment</code>
+
+  <h3>QAML metadata</h3>
+  <p>%use()%</p><br><p>This function imports another QAML file</p>
+  <code>%use("example.qaml")%</code>
+
+  <p>%version()%</p><br><p>Required QAML version for complication</p>
+  <code>%version("1.0.0")%</code>
+  
+</body>
+</html>
