@@ -25,4 +25,10 @@ a {
     background-color: #ddd;
     color: black;
   }
-
+.footer {
+  padding: 5px;
+  text-align: center;
+  color: white;
+  background: back;
+  margin-top: 5px;
+}
